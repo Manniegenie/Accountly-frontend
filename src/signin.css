@@ -1,0 +1,74 @@
+/* --- Color palette ------------------------------------------------------- */
+:root {
+    --blue-500: #2563eb;
+    --blue-600: #1e54d6;
+    --gray-50: #f9fafb;
+    --gray-300: #d1d5db;
+    --gray-700: #374151;
+  }
+  
+  /* --- Page layout --------------------------------------------------------- */
+  .signin-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gray-50);
+    padding: 1rem;
+  }
+  
+  /* --- Container styling --------------------------------------------------- */
+  .signin-container {
+    background: #fff;
+    padding: 6rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* --- Typography ---------------------------------------------------------- */
+  .signin-container h2 {
+    margin-bottom: 1.5rem;
+    color: var(--gray-700);
+    text-align: center;
+  }
+  
+  /* --- Form elements ------------------------------------------------------- */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--gray-700);
+    font-size: 0.9rem;
+    text-align: left; /* ✅ Add this */
+  }  
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .submit-btn {
+    width: 50%;
+    padding: 0.75rem;
+    background: var(--blue-500);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  .submit-btn:hover {
+    background: var(--blue-600);
+  }
+  
