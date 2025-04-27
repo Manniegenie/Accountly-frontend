@@ -1,0 +1,38 @@
+.dashboard-cards {
+    margin-left: 50px;
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .card {
+    flex: 1;
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+  
+  .card h3 {
+    font-size: 1rem;
+    color: #6b7280;
+    margin-bottom: 1rem;
+  }
+  
+  .card .number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #111827;
+  }
+  
+  .card .positive {
+    color: #10b981;
+    font-size: 0.9rem;
+  }
+  
+  .card .negative {
+    color: #ef4444;
+    font-size: 0.9rem;
+  }
+  

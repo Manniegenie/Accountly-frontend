@@ -1,0 +1,14 @@
+.dashboard {
+    display: flex;
+    background-color: #f9fafb;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    margin-left: 200px;
+    width: calc(150% - 250px);
+    min-height: 100vh;
+    background-color: #f9fafb;
+    padding: 2rem;
+  }
+  
