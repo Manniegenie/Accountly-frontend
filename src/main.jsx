@@ -16,7 +16,6 @@ createRoot(document.getElementById('root')).render(
         <Route path="/signin" element={<Signin />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/connect-bank" element={<ConnectBank />} /> {/* Add route for ConnectBank */}
-
       </Routes>
     </BrowserRouter>
   </StrictMode>

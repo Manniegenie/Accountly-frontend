@@ -36,7 +36,8 @@
   }
   
   .sidebar-menu a {
-    display: block;
+    display: flex; /* Align icon and text horizontally */
+    align-items: center; /* Center vertically */
     padding: 0.75rem 1rem;
     color: #374151;
     text-decoration: none;
@@ -44,6 +45,10 @@
     border-radius: 0.5rem;
     transition: background-color 0.3s, color 0.3s;
     font-size: 0.95rem;
+  }
+  
+  .sidebar-menu a svg {
+    margin-right: 10px; /* Space between the icon and the text */
   }
   
   .sidebar-menu a.active,

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaTachometerAlt, FaBuilding, FaBitcoin, FaUserAlt } from 'react-icons/fa'; // Import icons from react-icons
 import '../styles/sidebar.css';
 
 function Sidebar() {
@@ -9,10 +10,18 @@ function Sidebar() {
           Dashboard<span className="version"> v.01</span>
         </div>
         <nav className="sidebar-menu">
-          <a href="#" className="active">Dashboard</a>
-          <a href="#">Connect Bank</a>
-          <a href="#">Connect Wallet</a>
-          <a href="#">Add User</a>
+          <a href="#" className="active">
+            <FaTachometerAlt className="sidebar-icon" /> Dashboard
+          </a>
+          <a href="/connect-bank">
+            <FaBuilding className="sidebar-icon" /> Connect Bank
+          </a>
+          <a href="#">
+            <FaBitcoin className="sidebar-icon" /> Connect Wallet
+          </a>
+          <a href="#">
+            <FaUserAlt className="sidebar-icon" /> Add User
+          </a>
         </nav>
       </div>
     </div>
