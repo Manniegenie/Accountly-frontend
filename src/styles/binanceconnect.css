@@ -1,0 +1,105 @@
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #535bf2;
+    --text-dark: #374151;
+    --text-darker: #1f2937;
+    --bg-light: #f9fafb;
+    --bg-white: #ffffff;
+    --border-color: #e5e7eb;
+    --radius-md: 0.75rem;
+    --radius-sm: 0.5rem;
+    --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --transition-fast: 0.3s ease;
+  }
+  
+  /* --- Page Layout --- */
+  .update-binance-page {
+    padding: 2rem;
+    background-color: var(--bg-light);
+    min-height: 100vh;
+  }
+  
+  /* --- Header Section --- */
+  .page-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .page-header h1 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    font-weight: 700;
+  }
+  
+  /* --- Form Container --- */
+  .update-form-container {
+    background-color: var(--bg-white);
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+  
+  /* --- Alert Message --- */
+  .alert {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .alert.success {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  
+  .alert.error {
+    background-color: #fee2e2;
+    color: #b91c1c;
+  }
+  
+  /* --- Form Styling --- */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-darker);
+  }
+  
+  .form-group input {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+  }
+  
+  /* --- Submit Button --- */
+  .submit-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+  }
+  
+  .submit-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+  }
+  

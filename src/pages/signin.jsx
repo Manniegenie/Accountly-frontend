@@ -1,42 +1,65 @@
 import React, { useState } from 'react';
 import '../styles/signin.css';
 
+function Toast({ message, type, onClose }) {
+  return (
+    <div className={`toast ${type}`}>
+      {message}
+      <button onClick={onClose} className="close-btn">&times;</button>
+    </div>
+  );
+}
+
 function Signin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [toast, setToast] = useState({ message: '', type: '' });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    setToast({ message: '', type: '' });
+
     try {
-      const response = await fetch('https://your-backend-api.com/api/login', {
+      const response = await fetch('http://localhost:3000/auth/signin', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
         console.log('Login successful:', data);
-        // You can now store token, redirect user, etc.
+        localStorage.setItem('token', data.token);
+        setToast({ message: 'Sign in successful!', type: 'success' });
+
+        setTimeout(() => {
+          window.location.href = '/dashboard'; // Redirect after 1.5 seconds
+        }, 1500);
       } else {
-        console.error('Login failed:', data.message || 'Unknown error');
-        // Optionally show an error message on the form
+        setToast({ message: data.message || 'Login failed.', type: 'error' });
       }
     } catch (error) {
       console.error('Error during login:', error);
-      // Optionally show a connection error
+      setToast({ message: 'Server error. Please try again.', type: 'error' });
     }
   };
-  
 
   return (
     <div className="signin-page">
+      <div className="page-header">
+        <h1>Sign In</h1>
+      </div>
+
       <div className="signin-container">
-        <h2>Sign In</h2>
+        {toast.message && (
+          <Toast
+            message={toast.message}
+            type={toast.type}
+            onClose={() => setToast({ message: '', type: '' })}
+          />
+        )}
+
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Email</label>
@@ -56,7 +79,7 @@ function Signin() {
               required
             />
           </div>
-          <button type="submit" className="submit-btn">Sign In</button>
+          <button type="submit" className="connect-btn">Sign In</button>
         </form>
       </div>
     </div>

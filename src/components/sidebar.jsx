@@ -16,7 +16,7 @@ function Sidebar() {
           <a href="/connect-bank">
             <FaBuilding className="sidebar-icon" /> Connect Bank
           </a>
-          <a href="#">
+          <a href="/Update-Binance">
             <FaBitcoin className="sidebar-icon" /> Connect Wallet
           </a>
           <a href="#">

@@ -1,20 +1,52 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../styles/dashboardcards.css';
 
 function DashboardCards() {
-  // Example state for API data (replace with your actual API fetch logic)
   const [dashboardData, setDashboardData] = useState({
-    fiatBalance: 5423000,
-    cryptoBalance: 10893,
-    totalTrades: 189,
-    fiatChange: '+16% this month',
-    cryptoChange: '-1% this month',
+    fiatBalance: 0,
+    cryptoBalance: 0,
+    totalTrades: 0,
+    fiatChange: '+0% this month',
+    cryptoChange: '+0% this month',
   });
 
-  // Simulate API fetch (replace with your actual API call)
   useEffect(() => {
-    // Example: fetch('/api/dashboard').then(res => res.json()).then(data => setDashboardData(data));
-    // For now, using static data
+    async function fetchCryptoBalance() {
+      try {
+        const token = localStorage.getItem('token'); // Get JWT from localStorage
+
+        if (!token) {
+          console.error('No token found in localStorage');
+          return;
+        }
+
+        const response = await axios.get('http://localhost:3000/binance-balance/portfolio/latest', {
+          headers: {
+            Authorization: `Bearer ${token}`, // ✅ Correct Bearer token
+          }
+        });
+
+        const { data } = response.data; // ✅ Get data object from API response
+
+        // Update the dashboardData
+        setDashboardData(prevData => ({
+          ...prevData,
+          cryptoBalance: data.totalValueUSD, // ✅ Correct path
+        }));
+
+      } catch (error) {
+        console.error('Error fetching crypto balances:', error.response?.data || error.message);
+      }
+    }
+
+    fetchCryptoBalance(); // Call immediately when component mounts
+
+    // ✅ Set up an interval to call every 5 minutes
+    const intervalId = setInterval(fetchCryptoBalance, 5 * 60 * 1000);
+
+    // ✅ Cleanup on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
@@ -26,7 +58,9 @@ function DashboardCards() {
       </div>
       <div className="card">
         <h3>CRYPTO BALANCE</h3>
-        <p className="number">${dashboardData.cryptoBalance.toLocaleString()}</p>
+        <p className="number">
+          ${parseFloat(dashboardData.cryptoBalance || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+        </p>
         <p className="negative">{dashboardData.cryptoChange}</p>
       </div>
       <div className="card">
