@@ -1,14 +1,12 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+// src/App.jsx
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './index.css';
 import Signin from './pages/signin.jsx';
 import Dashboard from './pages/dashboard.jsx';
 import ConnectBank from './pages/connectbank.jsx'; 
 import UpdateBinance from './pages/binanceconnect.jsx';
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+export default function App() {
+  return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Signin />} />
@@ -18,5 +16,5 @@ createRoot(document.getElementById('root')).render(
         <Route path="/update-binance" element={<UpdateBinance />} />
       </Routes>
     </BrowserRouter>
-  </StrictMode>
-);
+  );
+}
