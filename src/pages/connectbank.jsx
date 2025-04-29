@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/connectBank.css';
+import '../styles/connectbank.css';
 
 function ConnectBank() {
   const [banks, setBanks] = useState([
