@@ -1,11 +1,16 @@
 // src/App.jsx
+import React from 'react';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './index.css';
+
 import Signin from './pages/signin.jsx';
 import Dashboard from './pages/dashboard.jsx';
-import ConnectBank from './pages/connectbank.jsx'; 
+import ConnectBank from './pages/connectbank.jsx';
 import UpdateBinance from './pages/binanceconnect.jsx';
 
-export default function App() {
+// React component for routing
+function App() {
   return (
     <BrowserRouter>
       <Routes>
@@ -18,3 +23,10 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
+// Mount the App to DOM (this makes App.jsx an entry file)
+createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
