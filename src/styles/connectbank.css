@@ -1,118 +1,113 @@
 :root {
-    --primary-color: #6366f1;
-    --primary-hover: #535bf2;
-    --text-dark: #374151;
-    --text-darker: #1f2937;
-    --bg-light: #f9fafb;
-    --bg-white: #ffffff;
-    --border-color: #e5e7eb;
-    --radius-md: 0.75rem;
-    --radius-sm: 0.5rem;
-    --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.1);
-    --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.12);
-    --transition-fast: 0.3s ease;
-  }
-  
-  /* --- Page Layout --- */
-  .connect-bank-page {
-    padding: 2rem;
-    background-color: var(--bg-light);
-    min-height: 100vh;
-  }
-  
-  /* --- Header Section --- */
+  --primary-color: #6366f1;
+  --primary-hover: #535bf2;
+  --text-dark: #374151;
+  --text-darker: #1f2937;
+  --bg-light: #f9fafb;
+  --bg-white: #ffffff;
+  --border-color: #e5e7eb;
+  --radius-md: 0.75rem;
+  --radius-sm: 0.5rem;
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.12);
+  --transition-fast: 0.3s ease;
+}
+
+/* --- Page Layout --- */
+.connect-bank-page {
+  padding: 2rem;
+  background-color: var(--bg-light);
+  min-height: 100vh;
+}
+
+/* --- Header Section --- */
+.page-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  color: var(--text-dark);
+  font-weight: 700;
+  margin: 0;
+}
+
+/* --- Connect Button --- */
+.connect-btn {
+  padding: 0.6rem 1.5rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: center;
+  transition:
+    background-color var(--transition-fast),
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  flex-shrink: 0;
+  /* ❌ No width: 100% here — this prevents it from being full width on desktop */
+}
+
+/* --- Make button full-width only on small screens --- */
+@media (max-width: 600px) {
   .page-header {
-    display: flex;
-    flex-direction: row; /* ➡️ Horizontal: heading and button side-by-side */
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: stretch;
   }
-  
-  .page-header h1 {
-    font-size: 2rem;
-    color: var(--text-dark);
-    font-weight: 700;
-  }
-  
-  /* --- Connect Button --- */
+
   .connect-btn {
-    padding: 0.6rem 1.5rem;
-    background-color: var(--primary-color);
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    text-align: center;
-    transition:
-      background-color var(--transition-fast),
-      transform 0.25s ease,
-      box-shadow 0.25s ease;
-    /* No width set here on desktop */
-    flex-shrink: 0; /* Prevent button from shrinking weirdly */
-  }
-  
-  .connect-btn:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-hover);
-  }
-  
-  /* --- Bank Table Section --- */
-  .bank-table {
-    background-color: var(--bg-white);
-    padding: 2rem;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
-  }
-  
-  .bank-table h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--text-dark);
-    font-weight: 700;
-    text-align: center;
-  }
-  
-  /* --- Table Styling --- */
-  table {
     width: 100%;
-    border-collapse: collapse;
   }
-  
-  th, td {
-    padding: 1rem;
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
-  }
-  
-  th {
-    font-weight: 600;
-    color: var(--text-darker);
-  }
-  
-  tr:last-child td {
-    border-bottom: none;
-  }
-  
-  /* --- Row Hover Effect --- */
-  tbody tr:hover {
-    background-color: var(--bg-light);
-    transition: background-color var(--transition-fast);
-  }
-  
-  /* --- Responsive (Mobile) --- */
-  @media (max-width: 600px) {
-    .page-header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .connect-btn {
-      width: 100%;
-    }
-  }
-  
+}
+
+/* --- Bank Table Section --- */
+.bank-table {
+  background-color: var(--bg-white);
+  padding: 2rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.bank-table h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-dark);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* --- Table Styling --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  font-weight: 600;
+  color: var(--text-darker);
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* --- Row Hover Effect --- */
+tbody tr:hover {
+  background-color: var(--bg-light);
+  transition: background-color var(--transition-fast);
+}

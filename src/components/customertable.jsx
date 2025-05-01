@@ -24,11 +24,11 @@ function CustomerTable() {
         </thead>
         <tbody>
           <tr>
-            <td>Jane Cooper</td>
-            <td>Microsoft</td>
-            <td>(225) 555-0118</td>
-            <td>jane@microsoft.com</td>
-            <td>United States</td>
+            <td>Debit</td>
+            <td>Binance</td>
+            <td>$10,465</td>
+            <td>ctry66588dbbbd88r9nnd99db8</td>
+            <td>yeubu884888497bbu8hls89b99</td>
             <td><span className="status active">Active</span></td>
           </tr>
           {/* Add other rows */}

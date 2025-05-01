@@ -1,20 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-/* --- Root Variables --- */
+/* --- Root Variables (Theme Tokens) --- */
 :root {
   --primary-color: #6366f1;
   --primary-hover: #535bf2;
-  --gray-background: #f9fafb;
-  --dark-text: #1f2937;
-  --light-text: #6b7280;
+  --gray-bg: #f9fafb;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
   --border-color: #e5e7eb;
+  --radius-md: 0.75rem;
+  --radius-sm: 0.5rem;
+  --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.1);
 
+  /* Typography */
   font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color: var(--dark-text);
-  background-color: var(--gray-background);
+  color: var(--text-dark);
+  background-color: var(--gray-bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,36 +26,29 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* --- Basic Resets --- */
+/* --- Base Resets --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: var(--gray-background);
-  box-sizing: border-box;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
-/* --- Links --- */
-a {
-  font-weight: 500;
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-a:hover {
-  color: var(--primary-hover);
+  background-color: var(--gray-bg);
 }
 
 /* --- Typography --- */
+body {
+  font-size: 1rem;
+  color: var(--text-dark);
+  background-color: var(--gray-bg);
+}
+
 h1, h2, h3, h4, h5, h6 {
-  color: var(--dark-text);
-  font-weight: 600;
   margin: 0;
+  color: var(--text-dark);
+  font-weight: 600;
 }
 
 h1 {
@@ -64,14 +61,32 @@ h2 {
   margin-bottom: 1rem;
 }
 
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+}
+
+/* --- Links --- */
+a {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
 /* --- Buttons --- */
 button {
   font-family: inherit;
-  font-weight: 500;
   font-size: 1rem;
+  font-weight: 500;
   padding: 0.6em 1.2em;
   border: 1px solid transparent;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background-color: #1a1a1a;
   color: white;
   cursor: pointer;
@@ -87,33 +102,14 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* --- Utility Classes --- */
+/* --- Containers & Layout Utilities --- */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-/* --- Light Mode Override (Optional if using prefers-color-scheme) --- */
-@media (prefers-color-scheme: light) {
-  :root {
-    color: var(--dark-text);
-    background-color: var(--gray-background);
-  }
-
-  button {
-    background-color: #f9f9f9;
-    color: #1f2937;
-  }
-
-  a:hover {
-    color: #747bff;
-  }
-}
-
-/* --- Responsive Breakpoints --- */
-
-/* Tablet (768px and below) */
+/* --- Media Queries --- */
 @media (max-width: 768px) {
   .container {
     padding: 1.5rem;
@@ -130,7 +126,6 @@ button:focus-visible {
   }
 }
 
-/* Mobile (480px and below) */
 @media (max-width: 480px) {
   .container {
     padding: 1rem;
@@ -144,5 +139,22 @@ button:focus-visible {
   button {
     font-size: 0.85rem;
     padding: 0.5em 0.8em;
+  }
+}
+
+/* --- Light Theme (Optional Override) --- */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--text-dark);
+    background-color: var(--gray-bg);
+  }
+
+  button {
+    background-color: #f9f9f9;
+    color: var(--text-dark);
+  }
+
+  a:hover {
+    color: #747bff;
   }
 }
