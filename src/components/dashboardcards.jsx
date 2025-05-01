@@ -12,41 +12,63 @@ function DashboardCards() {
   });
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('No token found in localStorage');
+      return;
+    }
+
+    // Fetch crypto balance from Binance
     async function fetchCryptoBalance() {
       try {
-        const token = localStorage.getItem('token'); // Get JWT from localStorage
-
-        if (!token) {
-          console.error('No token found in localStorage');
-          return;
-        }
-
         const response = await axios.get('http://localhost:3000/binance-balance/portfolio/latest', {
           headers: {
-            Authorization: `Bearer ${token}`, // ✅ Correct Bearer token
-          }
+            Authorization: `Bearer ${token}`,
+          },
         });
 
-        const { data } = response.data; // ✅ Get data object from API response
+        const { data } = response.data;
 
-        // Update the dashboardData
         setDashboardData(prevData => ({
           ...prevData,
-          cryptoBalance: data.totalValueUSD, // ✅ Correct path
+          cryptoBalance: data.totalValueUSD,
         }));
-
       } catch (error) {
-        console.error('Error fetching crypto balances:', error.response?.data || error.message);
+        console.error('Error fetching crypto balance:', error.response?.data || error.message);
       }
     }
 
-    fetchCryptoBalance(); // Call immediately when component mounts
+    // Fetch fiat balance from Mono
+    async function fetchFiatBalance() {
+      try {
+        const response = await axios.get('http://localhost:3000/bankinfo/bankbalance', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-    // ✅ Set up an interval to call every 5 minutes
-    const intervalId = setInterval(fetchCryptoBalance, 5 * 60 * 1000);
+        const { data } = response.data;
 
-    // ✅ Cleanup on component unmount
-    return () => clearInterval(intervalId);
+        setDashboardData(prevData => ({
+          ...prevData,
+          fiatBalance: data.balance,
+        }));
+      } catch (error) {
+        console.error('Error fetching bank balance:', error.response?.data || error.message);
+      }
+    }
+
+    // Initial fetch
+    fetchCryptoBalance();
+    fetchFiatBalance();
+
+    // Refresh every 5 minutes
+    const intervalId = setInterval(() => {
+      fetchCryptoBalance();
+      fetchFiatBalance();
+    }, 5 * 60 * 1000);
+
+    return () => clearInterval(intervalId); // Cleanup
   }, []);
 
   return (
