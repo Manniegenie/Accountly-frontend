@@ -21,7 +21,7 @@ function DashboardCards() {
     // Fetch crypto balance from Binance
     async function fetchCryptoBalance() {
       try {
-        const response = await axios.get('https://accountly.onrender.com/binance-balance/portfolio/latest', {
+        const response = await axios.get('https://priscaai.onrender.com/binance-balance/portfolio/latest', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -41,7 +41,7 @@ function DashboardCards() {
     // Fetch fiat balance from Mono
     async function fetchFiatBalance() {
       try {
-        const response = await axios.get('https://accountly.onrender.com/bankinfo/bankbalance', {
+        const response = await axios.get('https://priscaai.onrender.com/bankinfo/bankbalance', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
