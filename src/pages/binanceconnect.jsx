@@ -12,7 +12,7 @@ function UpdateBinance() {
 
     try {
       const token = localStorage.getItem('token'); // Assumes user is authenticated
-      const response = await fetch('http://localhost:3000/binance/update-binance', {
+      const response = await fetch('https://priscaai.onrender.com/binance/update-binance', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

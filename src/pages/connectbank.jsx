@@ -10,7 +10,7 @@ function ConnectBank() {
     try {
       const jwt = localStorage.getItem('token');
 
-      const res = await fetch('http://localhost:3000/monoconnect/initiate', {
+      const res = await fetch('https://priscaai.onrender.com/monoconnect/initiate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ function ConnectBank() {
         await navigator.clipboard.writeText(code);
         console.log('Code copied to clipboard:', code);
 
-        const res = await fetch('http://localhost:3000/monoconnect/callback', {
+        const res = await fetch('https://priscaai.onrender.com/monoconnect/callback', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

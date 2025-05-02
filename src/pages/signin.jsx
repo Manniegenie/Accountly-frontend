@@ -20,7 +20,7 @@ function Signin() {
     setToast({ message: '', type: '' });
 
     try {
-      const response = await fetch('https://accountly.onrender.com/auth/signin', {
+      const response = await fetch('https://priscaai.onrender.com/auth/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
