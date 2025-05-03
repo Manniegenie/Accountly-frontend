@@ -41,7 +41,7 @@ function DashboardCards() {
     // Fetch fiat balance from Mono
     async function fetchFiatBalance() {
       try {
-        const response = await axios.get('https://priscaai.onrender.com/bankinfo/portfolio/latest', {
+        const response = await axios.get('https://priscaai.onrender.com/bankinfo/bank-balance', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
